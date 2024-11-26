@@ -12,3 +12,10 @@ def test_register(driver):
                                 "framework")
 
     assert Account_success.msg__()
+
+def test_register2(driver):
+    homepage = Homepage(driver)
+    Register_page = homepage.register()
+    Register_page.register_with__no_fn()
+
+    assert Register_page.error_msg()

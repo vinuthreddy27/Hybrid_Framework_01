@@ -79,8 +79,7 @@ class Base:
     def navigational_command_refresh(self):
         self.driver.refresh()
 
-
-    def date(self,month_year):
+    def select_date(self,month_year):
         self.driver.find_element("xpath","//i[@class='fa fa-calendar']").click()
         current=self.driver.find_element("xpath","//th[@class='picker-switch']").text
 

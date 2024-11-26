@@ -1,3 +1,5 @@
+from time import sleep
+
 from yourstore.library.library import Base
 
 class Address_page_locators(Base):
@@ -9,8 +11,7 @@ class Address_page_locators(Base):
     city=("name","city")
     post_code=("name","postcode")
     country_dropdown=("name","country_id")
-    state=("name","input-zone")
-    option=("xpath","//option[.='Vale of Glamorgan']")
+    state=("name","zone_id")
     radio_btn=("css selector","input[value='1']")
     continue_btn=("css selector","input[value='Continue']")
 
@@ -23,7 +24,8 @@ class Address_page_locators(Base):
         self.send_text_to_textfield(self.city,city)
         self.send_text_to_textfield(self.post_code,postcode)
         self.select_a_option(self.country_dropdown,option)
-        self.select_a_option(self.option,state)
+        sleep(2)
+        self.select_a_option(self.state,state)
         self.click_on_element(self.radio_btn)
         self.click_on_element(self.continue_btn)
 

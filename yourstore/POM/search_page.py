@@ -4,6 +4,7 @@ from yourstore.library.library import Base
 
 class Search_page(Base):
     product = ("link text", "iMac")
+    product__=("link text","HP LP3065")
     review_link = ("xpath", "//a[.='Write a review']")
     product_link=("xpath","//p[@class='price']/..//a[.='Samsung Galaxy Tab 10.1']")
     product_link2= ("link text","iPod Touch")
@@ -53,6 +54,8 @@ class Search_page(Base):
         self.send_text_to_textfield(self.quantity_locator,2)
         self.click_on_element(self.cart_btn)
 
+    def click_link(self):
+        self.click_on_element(self.product__)
 
     def success_Msg(self):
       self.display_msg(self.success_msg)
