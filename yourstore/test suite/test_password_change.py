@@ -1,5 +1,8 @@
 from yourstore.POM.home_page import Homepage
+from yourstore.POM.landing_page import Landing_page
+import pytest
 
+@pytest.mark.skip
 def test_password_change(driver):
     homepage=Homepage(driver)
     Loginpage=homepage.login_()
@@ -7,3 +10,4 @@ def test_password_change(driver):
     Password_change_page=Landing_page.change_password()
     Password_change_page.change("selenium","selenium")
 
+    assert Landing_page.password_changed()

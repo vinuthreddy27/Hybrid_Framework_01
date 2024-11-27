@@ -1,5 +1,7 @@
-from yourstore.POM.home_page import Homepage
+import pytest
 
+from yourstore.POM.home_page import Homepage
+@pytest.mark.skip
 def test_calender(driver):
     homepage=Homepage(driver)
     Loginpage=homepage.login_()

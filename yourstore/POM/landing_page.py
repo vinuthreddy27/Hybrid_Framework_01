@@ -15,6 +15,8 @@ class Landing_page(Base):
     new_address_link=("link text","New Address")
     subscription=("link text", "Newsletter")
 
+    success_pass_changed=("xpath","//*[.='Success: Your password has been successfully updated.']")
+
     def edit_account_info(self):
         self.click_on_element(self.edit_link)
 
@@ -40,3 +42,7 @@ class Landing_page(Base):
         self.click_on_element(self.subscription)
 
         return Subscription_page(self.driver)
+
+    def password_changed(self):
+        self.print_text(self.success_pass_changed)
+        return self.display_msg(self.success_pass_changed)

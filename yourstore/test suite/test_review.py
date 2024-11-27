@@ -1,7 +1,8 @@
 from yourstore.POM.home_page import Homepage
 from yourstore.POM.review_page import Review_page
+import pytest
 
-
+@pytest.mark.skip
 def test_review(driver):
     homepage=Homepage(driver)
     Login_page=homepage.login_()

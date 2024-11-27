@@ -112,5 +112,3 @@ class Base:
                 break
         self.driver.switch_to.window(parent_window)
 
-
-

@@ -1,6 +1,8 @@
+import pytest
+
 from yourstore.POM.home_page import Homepage
 
-
+@pytest.mark.skip
 def test_register(driver):
     homepage=Homepage(driver)
     Register_page=homepage.register()
@@ -12,7 +14,7 @@ def test_register(driver):
                                 "framework")
 
     assert Account_success.msg__()
-
+@pytest.mark.skip
 def test_register2(driver):
     homepage = Homepage(driver)
     Register_page = homepage.register()

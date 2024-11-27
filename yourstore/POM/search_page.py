@@ -1,3 +1,5 @@
+from time import sleep
+
 from yourstore.POM.review_page import Review_page
 from yourstore.library.library import Base
 
@@ -16,18 +18,19 @@ class Search_page(Base):
     cart_btn=("xpath","//button[.='Add to Cart']")
     quantity_locator = ("name", "quantity")
 
-
     wishlist_bt= ("xpath", "//span[.='Add to Cart']/../..//i[@class='fa fa-heart']")
-
-
     wishlist_btn = ("xpath", "//button[@data-original-title='Add to Wish List']")
     success_msg=("xpath","//div[contains(@class,'alert')]/a[.='shopping cart']")
+
+    wishlist_success_msg=("xpath","//div[@class='alert alert-success alert-dismissiblee']")
 
     def add_wishlist(self):
         self.click_on_element(self.wishlist_btn)
 
     def added_to_wishlist(self):
-       return self.display_msg(self.success_msg)
+        sleep(2)
+        self.print_text(self.wishlist_success_msg)
+        return self.display_msg(self.wishlist_success_msg)
 
     def product_info(self):
         self.click_on_element(self.product_link)

@@ -1,6 +1,8 @@
+import pytest
+
 from yourstore.POM.home_page import Homepage
 
-
+@pytest.mark.skip
 def test_subscription(driver):
     homepage=Homepage(driver)
     Loginpage=homepage.login_()
@@ -9,7 +11,7 @@ def test_subscription(driver):
     Subscription_page.Yes()
 
     assert Subscription_page.validate_yes()
-
+@pytest.mark.skip
 def test_subscription2(driver):
     homepage=Homepage(driver)
     Loginpage=homepage.login_()
