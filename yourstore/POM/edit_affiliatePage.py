@@ -16,7 +16,7 @@ class Edit_affiliate(Base):
         self.send_text_to_textfield(self.tax_textfield,tax)
         self.click_on_element(self.payment_mode_btn)
         self.send_text_to_textfield(self.paypal_textfield,pay)
-        # self.click_on_element(self.continue_btn)
+        self.click_on_element(self.continue_btn)
 
 
 

@@ -1,13 +1,12 @@
-import pytest
+
 
 from yourstore.POM.home_page import Homepage
 
-@pytest.mark.skip
+
 def test_edit(driver):
-    homepage=Homepage(driver)
-    Loginpage=homepage.login_()
-    Landing_page=Loginpage.login_into_application("reddyvinuth27@gmail.com",
-                                          "selenium")
-    Modify_account=Landing_page.edit_account_info()
-    Modify_account.modify("6969696969")
+    homepage = Homepage(driver)
+    login_page = homepage.login_()
+    landing_page=login_page.login_into_application("reddyvinuth27@gmail.com", "selenium")
+    modify_account=landing_page.edit_account_info()
+    modify_account.modify("6969696969")
 

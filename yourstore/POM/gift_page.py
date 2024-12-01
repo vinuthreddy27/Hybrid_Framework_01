@@ -24,4 +24,4 @@ class Gift_page(Base):
         self.send_text_to_textfield(self.message,msg)
         self.send_text_to_textfield(self.amount,amnt)
         self.click_on_element(self.agree_checkbox)
-        # self.click_on_element(self.continue_btn)
+        self.click_on_element(self.continue_btn)

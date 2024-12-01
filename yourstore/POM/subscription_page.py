@@ -1,6 +1,5 @@
 from yourstore.library.library import Base
 
-
 class Subscription_page(Base):
     yes=("xpath","//input[@value='1']")
     no=("xpath","//input[@value='0']")

@@ -9,5 +9,4 @@ class Compare_page(Base):
     compare_link=("id","compare-total")
     remove_btn4=("xpath","//a[contains(@href,'compare&remove=46')]/..//a")
     add_to_cart_btn4=("xpath","//a[contains(@href,'compare&remove=29')]/..//input")
-
     remove_btn2 = ("xpath","//button[@title='Remove']")

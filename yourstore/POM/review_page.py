@@ -12,5 +12,5 @@ class Review_page(Base):
         self.send_text_to_textfield(self.yourname_tf,yourname)
         self.send_text_to_textfield(self.text_area,text)
         self.click_on_element(self.rating_rb)
-        # self.click_on_element(self.continue_btn)
+        self.click_on_element(self.continue_btn)
 

@@ -24,7 +24,7 @@ class Address_page_locators(Base):
         self.send_text_to_textfield(self.city,city)
         self.send_text_to_textfield(self.post_code,postcode)
         self.select_a_option(self.country_dropdown,option)
-        sleep(2)
+        sleep(1)
         self.select_a_option(self.state,state)
         self.click_on_element(self.radio_btn)
         self.click_on_element(self.continue_btn)
