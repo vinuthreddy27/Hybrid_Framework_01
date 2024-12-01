@@ -1,5 +1,3 @@
-from time import sleep
-
 from yourstore.POM.registersuccess_page import Account_success
 from yourstore.library.library import Base
 
@@ -37,14 +35,24 @@ class Registerpage(Base):
 
         return Account_success(self.driver)
 
-    def select_checkbox(self):
-        self.click_on_element(self.radio_btn)
+
+    def register_with_no_fn(self):
+        self.send_text_to_textfield(self.first_name_locator,"")
         self.click_on_element(self.privacy_policy_check_box_btn)
         self.click_on_element(self.register_btn)
 
+    def register_with__invalid_fn(self):
+        self.send_text_to_textfield(self.first_name_locator, "vinuth71")
+        self.click_on_element(self.privacy_policy_check_box_btn)
+        self.click_on_element(self.register_btn)
 
-    def register_with__no_fn(self):
-        self.send_text_to_textfield(self.first_name_locator,"")
+    def register_with_fn_32(self):
+        self.send_text_to_textfield(self.first_name_locator, "abcdefghijklmnopqrstuuvwxyzaabbccdd")
+        self.click_on_element(self.privacy_policy_check_box_btn)
+        self.click_on_element(self.register_btn)
+
+    def register_with_fn_with_special_charater(self):
+        self.send_text_to_textfield(self.first_name_locator, "$martin")
         self.click_on_element(self.privacy_policy_check_box_btn)
         self.click_on_element(self.register_btn)
 
@@ -64,10 +72,49 @@ class Registerpage(Base):
         self.click_on_element(self.register_btn)
 
     def register_with_password(self):
-        self.send_text_to_textfield(self.first_name_locator, "")
+        self.send_text_to_textfield(self.password_locator, "")
         self.click_on_element(self.privacy_policy_check_box_btn)
         self.click_on_element(self.register_btn)
+
 
     def error_msg(self):
        return self.display_msg(self.first_name_error_msg)
 
+    def register_with_wrong_telephone_number(self):
+        self.send_text_to_textfield(self.telephone_locator,"898989898.9")
+        self.click_on_element(self.privacy_policy_check_box_btn)
+        self.click_on_element(self.register_btn)
+
+    def register_with_wrong_telephone_number2(self):
+        self.send_text_to_textfield(self.telephone_locator,"67788998000")
+        self.click_on_element(self.privacy_policy_check_box_btn)
+        self.click_on_element(self.register_btn)
+
+    def register_with_wrong_telephone_number3(self):
+        self.send_text_to_textfield(self.telephone_locator,"rv9980766669")
+        self.click_on_element(self.privacy_policy_check_box_btn)
+        self.click_on_element(self.register_btn)
+
+    def register_with_no_telephone_number3(self):
+        self.send_text_to_textfield(self.telephone_locator,"")
+        self.click_on_element(self.privacy_policy_check_box_btn)
+        self.click_on_element(self.register_btn)
+
+    def register_with_invalid_telephone_number3(self):
+        self.send_text_to_textfield(self.telephone_locator, "78767$8669")
+        self.click_on_element(self.privacy_policy_check_box_btn)
+        self.click_on_element(self.register_btn)
+
+    def register(self):
+        self.send_text_to_textfield(self.first_name_locator,"martin")
+        self.send_text_to_textfield(self.last_name_locator,"chris")
+        self.send_text_to_textfield(self.email_locator,"mortein11@gmail.com")
+        self.send_text_to_textfield(self.telephone_locator,"8889997776")
+        self.send_text_to_textfield(self.password_locator,"selenium")
+        self.send_text_to_textfield(self.conform_password_locator,"framework")
+        self.click_on_element(self.radio_btn)
+        self.click_on_element(self.privacy_policy_check_box_btn)
+        self.click_on_element(self.register_btn)
+
+    def password_warning_msg(self):
+        self.print_text(self.password_error_msg)
