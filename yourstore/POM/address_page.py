@@ -1,5 +1,4 @@
 from time import sleep
-
 from yourstore.library.library import Base
 
 class Address_page_locators(Base):

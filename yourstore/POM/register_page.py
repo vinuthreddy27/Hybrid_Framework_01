@@ -33,7 +33,8 @@ class Registerpage(Base):
         self.click_on_element(self.privacy_policy_check_box_btn)
         self.click_on_element(self.register_btn)
 
-        return Account_success(self.driver)
+        account_success_page=Account_success(self.driver)
+        return account_success_page
 
 
     def register_with_no_fn(self):

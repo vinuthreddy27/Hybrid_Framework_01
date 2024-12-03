@@ -20,28 +20,33 @@ class Landing_page(Base):
     def edit_account_info(self):
         self.click_on_element(self.edit_link)
 
-        return Modify_account(self.driver)
+        modify_account_page=Modify_account(self.driver)
+        return modify_account_page
 
     def change_password(self):
         self.click_on_element(self.change_password_locator)
 
-        return Password_change_page(self.driver)
+        password_page=Password_change_page(self.driver)
+        return   password_page
 
     def edit_affiliate_account(self):
         self.click_on_element(self.A_account_link)
 
-        return Edit_affiliate(self.driver)
+        affiliate_page=Edit_affiliate(self.driver)
+        return affiliate_page
 
     def click_address(self):
         self.click_on_element(self.address_link)
         self.click_on_element(self.new_address_link)
 
-        return Address_page_locators(self.driver)
+        address_page=Address_page_locators(self.driver)
+        return address_page
 
     def newsletter_link(self):
         self.click_on_element(self.subscription)
 
-        return Subscription_page(self.driver)
+        subscription_page=Subscription_page(self.driver)
+        return subscription_page
 
     def password_changed(self):
         self.print_text(self.success_pass_changed)

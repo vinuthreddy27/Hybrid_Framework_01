@@ -4,14 +4,14 @@ from yourstore.POM.home_page import Homepage
 def test_register(get_browser):
     homepage=Homepage(get_browser)
     register_page=homepage.register()
-    account_success=register_page.register_form("vinuth",
+    account_success_page=register_page.register_form("vinuth",
                                 "reddy",
                                 "reddyvinuth27@gmail.com",
                                 "7676252914",
                                 "framework",
                                 "framework")
 
-    assert account_success.msg__()
+    assert account_success_page.msg_()
 
 def test_register2(get_browser):
     homepage = Homepage(get_browser)

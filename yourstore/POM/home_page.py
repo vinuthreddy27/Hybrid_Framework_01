@@ -36,36 +36,42 @@ class Homepage(Base):
         self.click_on_element(self.my_account_locator)
         self.click_on_element(self.register_locator)
 
-        return Registerpage(self.driver)
+        register_page=Registerpage(self.driver)
+        return register_page
 
     def login_(self):
         self.click_on_element(self.my_account_locator)
         self.click_on_element(self.login_locator)
 
-        return Loginpage(self.driver)
+        login_page=Loginpage(self.driver)
+        return login_page
 
     def send_product(self,product):
         self.send_text_to_textfield(self.search_locator,product)
         self.click_on_element(self.search_btn)
 
-        return Search_page(self.driver)
+        search_page=Search_page(self.driver)
+        return search_page
 
     def gift_link(self):
         self.click_on_element(self.gift_locator)
 
-        return Gift_page(self.driver)
+        gift_page=Gift_page(self.driver)
+        return gift_page
 
 
     def contact_us(self):
         self.click_on_element(self.contact_us_locator)
 
-        return Enquiry_page(self.driver)
+        enquiry_page=Enquiry_page(self.driver)
+        return enquiry_page
 
     def logout(self):
         self.click_on_element(self.my_account_locator)
         self.click_on_element(self.logout_link)
 
-        return Logout_page(self.driver)
+        logout_page=Logout_page(self.driver)
+        return logout_page
 
     def total_cart(self):
         self.click_on_element(self.cart_total)
