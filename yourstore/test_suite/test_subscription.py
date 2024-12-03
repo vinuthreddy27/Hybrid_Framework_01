@@ -1,5 +1,3 @@
-
-
 from yourstore.POM.home_page import Homepage
 
 
