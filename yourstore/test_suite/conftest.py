@@ -14,7 +14,7 @@ def get_browser(request):
     else:
         print("invalid browser")
 
-    driver.implicitly_wait(10)
+    driver.implicitly_wait(3)
     driver.get("https://tutorialsninja.com/demo/")
     driver.maximize_window()
     yield driver
