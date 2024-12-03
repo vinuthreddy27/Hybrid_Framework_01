@@ -1,8 +1,8 @@
 
 from yourstore.POM.home_page import Homepage
 
-def test_register(driver):
-    homepage=Homepage(driver)
+def test_register(get_browser):
+    homepage=Homepage(get_browser)
     register_page=homepage.register()
     account_success=register_page.register_form("vinuth",
                                 "reddy",
@@ -13,8 +13,8 @@ def test_register(driver):
 
     assert account_success.msg__()
 
-def test_register2(driver):
-    homepage = Homepage(driver)
+def test_register2(get_browser):
+    homepage = Homepage(get_browser)
     register_page = homepage.register()
     register_page.register_with__no_fn()
 
