@@ -1,4 +1,6 @@
 from time import sleep
+
+from yourstore.POM.cart_page import Cart_page
 from yourstore.POM.review_page import Review_page
 from yourstore.library.library import Base
 
@@ -10,24 +12,26 @@ class Search_page(Base):
     product_link=("xpath","//p[@class='price']/..//a[.='Samsung Galaxy Tab 10.1']")
     product_link2= ("link text","iPod Touch")
 
+    cart_=("xpath","//span[.='Add to Cart']")
+
     image1 = ("xpath", "//img[contains(@src,'ipod_touch_1-228x228.jpg')]")
     next_btn = ("xpath", "//button[@title='Next (Right arrow key)']")
     prev_btn = ("xpath", "//button[@title='Previous (Left arrow key)']")
     close_btn =("xpath","//button[@title='Close (Esc)']")
+
     cart_btn=("xpath","//button[.='Add to Cart']")
     quantity_locator = ("name", "quantity")
 
     wishlist_bt= ("xpath", "//span[.='Add to Cart']/../..//i[@class='fa fa-heart']")
     wishlist_btn = ("xpath", "//button[@data-original-title='Add to Wish List']")
     success_msg=("xpath","//div[contains(@class,'alert')]/a[.='shopping cart']")
-
     wishlist_success_msg=("xpath","//div[@class='alert alert-success alert-dismissiblee']")
 
     def add_wishlist(self):
         self.click_on_element(self.wishlist_btn)
 
     def added_to_wishlist(self):
-        sleep(2)
+        sleep(1)
         self.print_text(self.wishlist_success_msg)
         return self.display_msg(self.wishlist_success_msg)
 
@@ -38,7 +42,8 @@ class Search_page(Base):
         self.click_on_element(self.product)
         self.click_on_element(self.review_link)
 
-        return Review_page(self.driver)
+        review_page=Review_page(self.driver)
+        return review_page
 
     def product_(self):
         self.click_on_element(self.product_link2)
@@ -55,6 +60,10 @@ class Search_page(Base):
         self.click_on_element(self.product_link2)
         self.send_text_to_textfield(self.quantity_locator,2)
         self.click_on_element(self.cart_btn)
+
+    def add_2_cart(self):
+        self.click_on_element(self.cart_)
+
 
     def click_link(self):
         self.click_on_element(self.product__)

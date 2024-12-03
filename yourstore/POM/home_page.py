@@ -1,3 +1,4 @@
+from yourstore.POM.cart_page import Cart_page
 from yourstore.POM.enqiry_page import Enquiry_page
 from yourstore.POM.gift_page import Gift_page
 from yourstore.POM.login_page import Loginpage
@@ -75,3 +76,6 @@ class Homepage(Base):
 
     def total_cart(self):
         self.click_on_element(self.cart_total)
+
+        cart_page = Cart_page(self.driver)
+        return cart_page
