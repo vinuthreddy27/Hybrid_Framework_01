@@ -4,6 +4,8 @@ from yourstore.library.library import Base
 
 class Registerpage(Base):
 
+    login_link=("link text","login page")
+
     first_name_locator = ("id", "input-firstname")
     last_name_locator = ("id", "input-lastname")
     email_locator = ("id", "input-email")
@@ -119,3 +121,7 @@ class Registerpage(Base):
 
     def password_warning_msg(self):
         self.print_text(self.password_error_msg)
+
+
+    def click_on_login(self):
+        self.click_on_element(self.login_link)
