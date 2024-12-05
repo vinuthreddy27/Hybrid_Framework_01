@@ -33,6 +33,8 @@ class Homepage(Base):
     order_history_link=("xpath","//li[@class='dropdown']//li[.='Order History']")
     logout_link= ("xpath","//ul[starts-with(@class,'dropdown')]//a[.='Logout']")
 
+    footer_my_account=("link text","My Account")
+
     def register(self):
         self.click_on_element(self.my_account_locator)
         self.click_on_element(self.register_locator)
@@ -79,3 +81,7 @@ class Homepage(Base):
 
         cart_page = Cart_page(self.driver)
         return cart_page
+
+    def click_footer_my_Account(self):
+        self.click_on_element(self.footer_my_account)
+

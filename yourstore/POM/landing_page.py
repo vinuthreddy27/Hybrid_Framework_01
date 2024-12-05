@@ -1,6 +1,7 @@
 from yourstore.POM.address_page import Address_page_locators
 from yourstore.POM.changepassword_page import Password_change_page
 from yourstore.POM.edit_affiliatePage import Edit_affiliate
+from yourstore.POM.logout_page import Logout_page
 from yourstore.POM.modify_accountpage import Modify_account
 from yourstore.POM.subscription_page import Subscription_page
 from yourstore.library.library import Base
@@ -8,6 +9,7 @@ from yourstore.library.library import Base
 
 
 class Landing_page(Base):
+    logout_link=("link text","Logout")
     edit_link = ("xpath", "//a[.='Edit your account information']")
     change_password_locator = ("xpath", "//ul[@class='list-unstyled']/..//a[.='Change your password']")
     A_account_link = ("xpath", "//a[.='Edit your affiliate information']")
@@ -51,3 +53,9 @@ class Landing_page(Base):
     def password_changed(self):
         self.print_text(self.success_pass_changed)
         return self.display_msg(self.success_pass_changed)
+
+    def click_on_logout(self):
+        self.click_on_element(self.logout_link)
+
+        logout_page = Logout_page(self.driver)
+        return logout_page

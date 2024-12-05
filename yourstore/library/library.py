@@ -1,9 +1,32 @@
+from selenium.webdriver.support.expected_conditions import visibility_of_element_located, element_to_be_clickable, \
+    alert_is_present
 from selenium.webdriver.support.select import Select
+from selenium.webdriver.support.wait import WebDriverWait
+
 
 class Base:
 
     def __init__(self,driver):
         self.driver=driver
+
+
+    def element_to_be_visible(self,locator):
+        wait=WebDriverWait(self.driver,5,poll_frequency=5)
+        wait.until(visibility_of_element_located(locator))
+        return wait
+
+    def element_to_be_clickable(self, locator):
+        wait = WebDriverWait(self.driver, 5,poll_frequency=5)
+        wait.until(element_to_be_clickable(locator))
+        return wait
+
+    def wait_for_alert(self, locator):
+        wait = WebDriverWait(self.driver, 12)
+        wait.until(alert_is_present())
+        return wait
+    def wait(self):
+        wait=WebDriverWait(self.driver,5,poll_frequency=2)
+
 
     def search_for_element(self,locator):
         element=self.driver.find_element(*locator)

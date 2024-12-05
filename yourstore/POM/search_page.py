@@ -1,11 +1,9 @@
-from time import sleep
-
-from yourstore.POM.cart_page import Cart_page
 from yourstore.POM.review_page import Review_page
 from yourstore.library.library import Base
 
 
 class Search_page(Base):
+
     product = ("link text", "iMac")
     product__=("link text","HP LP3065")
     review_link = ("xpath", "//a[.='Write a review']")
@@ -19,19 +17,23 @@ class Search_page(Base):
     prev_btn = ("xpath", "//button[@title='Previous (Left arrow key)']")
     close_btn =("xpath","//button[@title='Close (Esc)']")
 
-    cart_btn=("xpath","//button[.='Add to Cart']")
+    cart_btn=("id","button-cart")
     quantity_locator = ("name", "quantity")
+
+    no_product_msg=("xpath","//p[.='There is no product that matches the search criteria.']")
 
     wishlist_bt= ("xpath", "//span[.='Add to Cart']/../..//i[@class='fa fa-heart']")
     wishlist_btn = ("xpath", "//button[@data-original-title='Add to Wish List']")
-    success_msg=("xpath","//div[contains(@class,'alert')]/a[.='shopping cart']")
-    wishlist_success_msg=("xpath","//div[@class='alert alert-success alert-dismissiblee']")
+
+    success_msg=("xpath","//div[contains(@class,'alert')]")
+
+    wishlist_success_msg=("xpath","//div[@class='alert alert-success alert-dismissible']")
 
     def add_wishlist(self):
         self.click_on_element(self.wishlist_btn)
 
     def added_to_wishlist(self):
-        sleep(1)
+        self.element_to_be_visible(self.wishlist_success_msg)
         self.print_text(self.wishlist_success_msg)
         return self.display_msg(self.wishlist_success_msg)
 
@@ -69,4 +71,13 @@ class Search_page(Base):
         self.click_on_element(self.product__)
 
     def success_Msg(self):
+      self.element_to_be_visible(self.success_msg)
+      self.print_text(self.success_msg)
       self.display_msg(self.success_msg)
+
+
+    def product_Msg(self):
+
+      self.print_text(self.no_product_msg)
+      self.display_msg(self.no_product_msg)
+

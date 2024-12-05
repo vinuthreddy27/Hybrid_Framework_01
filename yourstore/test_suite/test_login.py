@@ -1,3 +1,5 @@
+from time import sleep
+
 from yourstore.POM.home_page import Homepage
 
 def test_login(get_browser):
@@ -44,3 +46,12 @@ def test_login_7(get_browser):
     if driver.title == "Account Login":
         print("yes")
     print(driver.title)
+
+
+def test_login_8(get_browser):
+    homepage=Homepage(get_browser)
+    login_page=homepage.login_()
+    login_page.login_into_application("reddyvinuth27@gmail.com","selenium")
+    logout_page=homepage.logout()
+
+    logout_page.account_logout()
