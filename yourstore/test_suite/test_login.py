@@ -1,5 +1,3 @@
-from time import sleep
-
 from yourstore.POM.home_page import Homepage
 
 def test_login(get_browser):

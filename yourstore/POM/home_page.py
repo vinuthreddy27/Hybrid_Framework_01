@@ -5,6 +5,7 @@ from yourstore.POM.login_page import Loginpage
 from yourstore.POM.logout_page import Logout_page
 from yourstore.POM.register_page import  Registerpage
 from yourstore.POM.search_page import Search_page
+from yourstore.POM.sitemap_page import sitemap_page
 from yourstore.library.library import Base
 
 class Homepage(Base):
@@ -28,12 +29,15 @@ class Homepage(Base):
 
     shopping_cart=("css selector","a[title='Shopping Cart']")
 
+    dropdown_my_account=("link text","My Account")
+
     downloads_link=("xpath","//li[@class='dropdown']//li[.='Downloads']")
     transactions_link=("xpath","//li[@class='dropdown']//li[.='Transactions']")
     order_history_link=("xpath","//li[@class='dropdown']//li[.='Order History']")
     logout_link= ("xpath","//ul[starts-with(@class,'dropdown')]//a[.='Logout']")
 
     footer_my_account=("link text","My Account")
+    sitemap_link=("link text","Site Map")
 
     def register(self):
         self.click_on_element(self.my_account_locator)
@@ -85,3 +89,12 @@ class Homepage(Base):
     def click_footer_my_Account(self):
         self.click_on_element(self.footer_my_account)
 
+    def click_my_account(self):
+        self.click_on_element(self.my_account_locator)
+        self.click_on_element(self.dropdown_my_account)
+
+    def click_on_sitemap(self):
+        self.click_on_element(self.sitemap_link)
+
+        sitepage=sitemap_page(self.driver)
+        return sitepage

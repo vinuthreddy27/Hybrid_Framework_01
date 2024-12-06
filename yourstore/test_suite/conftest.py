@@ -2,7 +2,7 @@ import pytest
 from selenium import webdriver
 
 
-@pytest.fixture(params=["chrome"],scope="class")
+@pytest.fixture(params=["chrome","firefox","edge"],scope="class")
 def get_browser(request):
     global driver
     if request.param=="chrome":

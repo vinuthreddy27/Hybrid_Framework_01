@@ -1,5 +1,6 @@
+from selenium.webdriver import ActionChains
 from selenium.webdriver.support.expected_conditions import visibility_of_element_located, element_to_be_clickable, \
-    alert_is_present
+    alert_is_present, element_located_to_be_selected
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
 
@@ -8,7 +9,6 @@ class Base:
 
     def __init__(self,driver):
         self.driver=driver
-
 
     def element_to_be_visible(self,locator):
         wait=WebDriverWait(self.driver,5,poll_frequency=5)
@@ -24,9 +24,35 @@ class Base:
         wait = WebDriverWait(self.driver, 12)
         wait.until(alert_is_present())
         return wait
-    def wait(self):
-        wait=WebDriverWait(self.driver,5,poll_frequency=2)
 
+    def wait(self,locator):
+        wait=WebDriverWait(self.driver,5,poll_frequency=2)
+        wait.until(element_located_to_be_selected(locator))
+        return wait
+
+    def right_click(self,locator):
+        element=self.search_for_element(locator)
+        actions=ActionChains(self.driver)
+        actions.context_click(element).perform()
+
+    def click(self,locator):
+        element=self.search_for_element(locator)
+        actions=ActionChains(self.driver)
+        actions.click(element).perform()
+
+    def send_keys(self,locator,text):
+        element=self.search_for_element(locator)
+        actions=ActionChains(self.driver)
+        actions.send_keys_to_element(element,text).perform()
+
+    def send_keyS(self,text):
+        actions=ActionChains(self.driver)
+        actions.send_keys(text).perform()
+        
+    def hover(self,locator):
+        element = self.search_for_element(locator)
+        actions = ActionChains(self.driver)
+        actions.move_to_element(element).perform()
 
     def search_for_element(self,locator):
         element=self.driver.find_element(*locator)

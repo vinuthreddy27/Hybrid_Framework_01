@@ -16,6 +16,7 @@ class Landing_page(Base):
     address_link=("link text","Address Book")
     new_address_link=("link text","New Address")
     subscription=("link text", "Newsletter")
+    password=("link text","Password")
 
     success_pass_changed=("xpath","//*[.='Success: Your password has been successfully updated.']")
 
@@ -26,6 +27,7 @@ class Landing_page(Base):
         return modify_account_page
 
     def change_password(self):
+        self.element_to_be_visible(self.change_password_locator)
         self.click_on_element(self.change_password_locator)
 
         password_page=Password_change_page(self.driver)
@@ -59,3 +61,7 @@ class Landing_page(Base):
 
         logout_page = Logout_page(self.driver)
         return logout_page
+
+    def click_password_link(self):
+        self.element_to_be_visible(self.password)
+        self.click_on_element(self.password)
