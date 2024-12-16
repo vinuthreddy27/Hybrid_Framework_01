@@ -17,7 +17,7 @@ class Search_page(Base):
     prev_btn = ("xpath", "//button[@title='Previous (Left arrow key)']")
     close_btn =("xpath","//button[@title='Close (Esc)']")
 
-    cart_btn=("id","button-cart")
+    cart_btn=("id","button-car")
     quantity_locator = ("name", "quantity")
 
     no_product_msg=("xpath","//p[.='There is no product that matches the search criteria.']")
@@ -25,7 +25,7 @@ class Search_page(Base):
     wishlist_bt= ("xpath", "//span[.='Add to Cart']/../..//i[@class='fa fa-heart']")
     wishlist_btn = ("xpath", "//button[@data-original-title='Add to Wish List']")
 
-    success_msg=("xpath","//div[contains(@class,'alert')]")
+    success_msg=("xpath","/div[@class='alert alert-success alert-dismissible']")
 
     wishlist_success_msg=("xpath","//div[@class='alert alert-success alert-dismissible']")
 

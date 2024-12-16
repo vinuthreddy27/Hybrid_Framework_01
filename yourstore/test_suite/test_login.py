@@ -5,6 +5,7 @@ def test_login(get_browser):
     login_page=homepage.login_()
     login_page.login_into_application("reddyvinuth27@gmail.com",
                     "selenium")
+
 def test_login2(get_browser):
     homepage=Homepage(get_browser)
     login_page=homepage.login_()

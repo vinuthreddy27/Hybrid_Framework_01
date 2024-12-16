@@ -1,4 +1,6 @@
+from yourstore.POM.landing_page import Landing_page
 from yourstore.POM.registersuccess_page import Account_success
+from yourstore.POM.subscription_page import Subscription_page
 from yourstore.library.library import Base
 
 
@@ -13,6 +15,7 @@ class Registerpage(Base):
     password_locator = ("id", "input-password")
     conform_password_locator = ("id", "input-confirm")
     radio_btn = ("xpath", "//label[@class='radio-inline']/input[@value = '1']")
+    no_btn=("xpath", "//label[@class='radio-inline']/input[@value = '2']")
     privacy_policy_check_box_btn = ("xpath", "//input[@type='checkbox']")
     register_btn = ("xpath", "//input[@value='Continue']")
 
@@ -22,6 +25,7 @@ class Registerpage(Base):
     invalid_email_error_msg=("xpath","//div[.='E-Mail Address does not appear to be valid!']")
     same_email_error_msg=("xpath", "//div[.='Warning: E-Mail Address is already registered!']")
     password_error_msg=("xpath","//div[.='Password must be between 4 and 20 characters!']")
+    conform_password_Error_msg=("xpath","//div[.='Password confirmation does not match password!']")
 
 
     def register_form(self,fn,ln,email,ph_no,password,c_password):
@@ -35,8 +39,24 @@ class Registerpage(Base):
         self.click_on_element(self.privacy_policy_check_box_btn)
         self.click_on_element(self.register_btn)
 
+
         account_success_page=Account_success(self.driver)
         return account_success_page
+
+
+    def register_form_mandator_Fields(self,fn,ln,email,ph_no,password,c_password):
+        self.send_text_to_textfield(self.first_name_locator,fn)
+        self.send_text_to_textfield(self.last_name_locator,ln)
+        self.send_text_to_textfield(self.generate_random_email(),email)
+        self.send_text_to_textfield(self.telephone_locator,ph_no)
+        self.send_text_to_textfield(self.password_locator,password)
+        self.send_text_to_textfield(self.conform_password_locator,c_password)
+        self.click_on_element(self.privacy_policy_check_box_btn)
+        self.click_on_element(self.register_btn)
+
+        account_success_page = Account_success(self.driver)
+        return account_success_page
+
 
 
     def register_with_no_fn(self):
@@ -119,8 +139,40 @@ class Registerpage(Base):
         self.click_on_element(self.privacy_policy_check_box_btn)
         self.click_on_element(self.register_btn)
 
+    def register2(self,fn,ln,ph_no,password,c_password):
+        self.send_text_to_textfield(self.first_name_locator,fn)
+        self.send_text_to_textfield(self.last_name_locator,ln)
+        self.send_text_to_textfield(self.email_locator,self.generate_random_email())
+        self.send_text_to_textfield(self.telephone_locator,ph_no)
+        self.send_text_to_textfield(self.password_locator,password)
+        self.send_text_to_textfield(self.conform_password_locator,c_password)
+        self.click_on_element(self.privacy_policy_check_box_btn)
+        self.click_on_element(self.register_btn)
+
+        landing_page=Landing_page(self.driver)
+        return landing_page
+
+    def register3(self,fn,ln,ph_no,password,c_password):
+        self.send_text_to_textfield(self.first_name_locator,fn)
+        self.send_text_to_textfield(self.last_name_locator,ln)
+        self.send_text_to_textfield(self.email_locator,self.generate_random_email())
+        self.send_text_to_textfield(self.telephone_locator,ph_no)
+        self.send_text_to_textfield(self.password_locator,password)
+        self.send_text_to_textfield(self.conform_password_locator,c_password)
+        self.click_on_element(self.radio_btn)
+        self.click_on_element(self.privacy_policy_check_box_btn)
+        self.click_on_element(self.register_btn)
+
+        landing_page=Landing_page(self.driver)
+        return landing_page
+
     def password_warning_msg(self):
         self.print_text(self.password_error_msg)
+
+    def con_password_error_msg(self):
+        self.element_to_be_visible(self.conform_password_Error_msg)
+        self.print_text(self.conform_password_Error_msg)
+        self.display_msg(self.conform_password_Error_msg)
 
 
     def click_on_login(self):

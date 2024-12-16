@@ -1,3 +1,5 @@
+import time
+
 from selenium.webdriver import ActionChains
 from selenium.webdriver.support.expected_conditions import visibility_of_element_located, element_to_be_clickable, \
     alert_is_present, element_located_to_be_selected
@@ -9,6 +11,15 @@ class Base:
 
     def __init__(self,driver):
         self.driver=driver
+
+
+    def take_screenshot(self):
+        self.driver.save_screenshot("..//screenshot" + '.png')
+
+    def generate_random_email(self):
+            timestamp = time.ctime().split()[3]
+            timestamp1 = timestamp.replace(":", "")
+            return "vinuth" + timestamp1 + "@gmail.com"
 
     def element_to_be_visible(self,locator):
         wait=WebDriverWait(self.driver,5,poll_frequency=5)
