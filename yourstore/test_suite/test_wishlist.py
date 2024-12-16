@@ -1,8 +1,7 @@
-import pytest
 from yourstore.POM.home_page import Homepage
 
 
-@pytest.mark.smoke
+
 def test_wishlist(get_browser):
     homepage = Homepage(get_browser)
     login_page = homepage.login_()

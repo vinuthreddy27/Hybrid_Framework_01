@@ -1,6 +1,5 @@
 from yourstore.POM.home_page import Homepage
 
-
 def test_buyproduct(get_browser):
     homepage = Homepage(get_browser)
     login_page = homepage.login_()

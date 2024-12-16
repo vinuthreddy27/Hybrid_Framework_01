@@ -1,4 +1,3 @@
-
 from yourstore.POM.home_page import Homepage
 
 def test_register(get_browser):
@@ -13,7 +12,6 @@ def test_register(get_browser):
     assert account_success_page.msg_()
 
 
-
 def test_register3(get_browser):
     homepage=Homepage(get_browser)
     register_page=homepage.register()
@@ -24,7 +22,6 @@ def test_register3(get_browser):
                                                 "kkrr",
                                                 "kkrr")
     assert account_success_page.msg_()
-
 
 def test_register2(get_browser):
     homepage = Homepage(get_browser)

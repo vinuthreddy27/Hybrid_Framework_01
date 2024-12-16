@@ -1,3 +1,4 @@
+import pytest
 
 from yourstore.POM.home_page import Homepage
 
@@ -10,7 +11,6 @@ def test_password_change(get_browser):
 
     landing_page.password_changed()
 
-
 def test_password_change2(get_browser):
     homepage = Homepage(get_browser)
     login_page = homepage.login_()
@@ -19,7 +19,6 @@ def test_password_change2(get_browser):
     password_page.change("selenium", "seleniu")
 
     password_page.display_error_msg()
-
 
 def test_password_change3(get_browser):
     homepage = Homepage(get_browser)
@@ -46,7 +45,6 @@ def test_password_change5(get_browser):
     landing_page.click_password_link()
     driver = get_browser
     print(driver.title)
-
 
 def test_password_change6(get_browser):
     homepage = Homepage(get_browser)

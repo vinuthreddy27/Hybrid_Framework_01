@@ -11,7 +11,16 @@ class Base:
 
     def __init__(self,driver):
         self.driver=driver
+        self.wait=WebDriverWait(self.driver,12)
 
+    def click_on_element(self,locator):
+        element=self.wait.until(visibility_of_element_located(locator))
+        element.click()
+
+    def send_text_to_textfield(self, locator, text):
+        element = self.wait.until(visibility_of_element_located(locator))
+        element.clear()
+        element.send_keys(text)
 
     def take_screenshot(self):
         self.driver.save_screenshot("..//screenshot" + '.png')
@@ -69,9 +78,7 @@ class Base:
         element=self.driver.find_element(*locator)
         return element
 
-    def click_on_element(self,locator):
-        element=self.search_for_element(locator)
-        element.click()
+
 
     def Submit(self,locator):
         element=self.search_for_element(locator)
@@ -91,10 +98,6 @@ class Base:
         element=self.search_for_element(locator)
         print(element.text)
 
-    def send_text_to_textfield(self,locator,text):
-        element=self.search_for_element(locator)
-        element.clear()
-        element.send_keys(text)
 
     def select_a_option(self,locator1,text):
         select_element=self.search_for_element(locator1)

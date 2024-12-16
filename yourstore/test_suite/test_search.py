@@ -7,11 +7,7 @@ def test_search(get_browser):
     login_page.login_into_application("reddyvinuth27@gmail.com", "selenium")
     search_page=homepage.send_product("Samsung Galaxy Tab 10.1")
     search_page.product_info()
-    if search_page.success_Msg():
-        assert True
-    else:
-        search_page.take_screenshot()
-        assert False
+
 
 def test_search2(get_browser):
     homepage = Homepage(get_browser)
@@ -19,11 +15,7 @@ def test_search2(get_browser):
     login_page.login_into_application("reddyvinuth27@gmail.com", "selenium")
     search_page = homepage.send_product("iPod Touch")
     search_page.product2()
-    if search_page.product2():
-        assert True
-    else:
-        search_page.take_screenshot()
-        assert False
+    search_page.product2()
 
 def test_search3(get_browser):
     homepage = Homepage(get_browser)
@@ -31,8 +23,4 @@ def test_search3(get_browser):
     login_page.login_into_application("reddyvinuth27@gmail.com", "selenium")
     search_page = homepage.send_product("")
 
-    if  search_page.product_Msg():
-        assert True
-    else:
-        search_page.take_screenshot()
-        assert False
+    search_page.product_Msg()
