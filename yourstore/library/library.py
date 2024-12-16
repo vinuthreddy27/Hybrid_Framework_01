@@ -2,7 +2,7 @@ import time
 
 from selenium.webdriver import ActionChains
 from selenium.webdriver.support.expected_conditions import visibility_of_element_located, element_to_be_clickable, \
-    alert_is_present, element_located_to_be_selected
+    alert_is_present, element_located_to_be_selected, presence_of_element_located
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
 
@@ -14,11 +14,11 @@ class Base:
         self.wait=WebDriverWait(self.driver,12)
 
     def click_on_element(self,locator):
-        element=self.wait.until(visibility_of_element_located(locator))
+        element=self.wait.until(presence_of_element_located(locator))
         element.click()
 
     def send_text_to_textfield(self, locator, text):
-        element = self.wait.until(visibility_of_element_located(locator))
+        element = self.wait.until(presence_of_element_located(locator))
         element.clear()
         element.send_keys(text)
 
@@ -77,8 +77,6 @@ class Base:
     def search_for_element(self,locator):
         element=self.driver.find_element(*locator)
         return element
-
-
 
     def Submit(self,locator):
         element=self.search_for_element(locator)
