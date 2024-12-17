@@ -23,19 +23,18 @@ class Search_page(Base):
     no_product_msg=("xpath","//p[.='There is no product that matches the search criteria.']")
 
     wishlist_bt= ("xpath", "//span[.='Add to Cart']/../..//i[@class='fa fa-heart']")
-    wishlist_btn = ("xpath", "//button[@data-original-title='Add to Wish List']")
 
-    success_msg=("xpath","/div[@class='alert alert-success alert-dismissible']")
+    wishlist_btn = ("xpath", "//button[@data-original-title='Add to Wish List']")
 
     wishlist_success_msg=("xpath","//div[@class='alert alert-success alert-dismissible']")
 
-    def add_wishlist(self):
-        self.click_on_element(self.wishlist_btn)
+
 
     def added_to_wishlist(self):
+        self.click_on_element(self.wishlist_btn)
         self.element_to_be_visible(self.wishlist_success_msg)
         self.print_text(self.wishlist_success_msg)
-        return self.display_msg(self.wishlist_success_msg)
+        self.display_msg(self.wishlist_success_msg)
 
     def product_info(self):
         self.click_on_element(self.product_link)
@@ -71,9 +70,9 @@ class Search_page(Base):
         self.click_on_element(self.product__)
 
     def success_Msg(self):
-      self.element_to_be_visible(self.success_msg)
-      self.print_text(self.success_msg)
-      self.display_msg(self.success_msg)
+      self.element_to_be_visible(self.wishlist_success_msg)
+      self.print_text(self.wishlist_success_msg)
+      self.display_msg(self.wishlist_success_msg)
 
 
     def product_Msg(self):

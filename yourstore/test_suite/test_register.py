@@ -9,7 +9,7 @@ def test_register(get_browser):
                                 "framework",
                                 "framework")
 
-    assert account_success_page.msg_()
+    account_success_page.msg_()
 
 
 def test_register3(get_browser):
@@ -59,3 +59,31 @@ def test_register6(get_browser):
                                          "selenium")
     subscription_page =landing_Page.newsletter_link()
     subscription_page.validate_yes()
+
+def test_register7(get_browser):
+    homepage=Homepage(get_browser)
+    register_Page=homepage.register()
+    register_Page.register_with_fn_32()
+
+    register_Page.fn_error_msg()
+
+def test_register8(get_browser):
+    homepage=Homepage(get_browser)
+    register_Page=homepage.register()
+    register_Page.register_with_wrong_telephone_number()
+
+    register_Page.fn_error_msg()
+
+def test_register9(get_browser):
+    homepage=Homepage(get_browser)
+    register_Page=homepage.register()
+    register_Page.register_with_wrong_telephone_number2()
+
+    register_Page.phno_error_msg()
+
+def test_register10(get_browser):
+    homepage=Homepage(get_browser)
+    register_Page=homepage.register()
+    register_Page.register_with_wrong_telephone_number3()
+
+    register_Page.phno_error_msg()

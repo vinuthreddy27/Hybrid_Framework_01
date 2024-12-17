@@ -28,10 +28,10 @@ class Registerpage(Base):
     conform_password_Error_msg=("xpath","//div[.='Password confirmation does not match password!']")
 
 
-    def register_form(self,fn,ln,email,ph_no,password,c_password):
+    def register_form(self,fn,ln,ph_no,password,c_password):
         self.send_text_to_textfield(self.first_name_locator,fn)
         self.send_text_to_textfield(self.last_name_locator,ln)
-        self.send_text_to_textfield(self.email_locator,email)
+        self.send_text_to_textfield(self.email_locator,self.generate_random_email())
         self.send_text_to_textfield(self.telephone_locator,ph_no)
         self.send_text_to_textfield(self.password_locator,password)
         self.send_text_to_textfield(self.conform_password_locator,c_password)
@@ -74,6 +74,10 @@ class Registerpage(Base):
         self.click_on_element(self.privacy_policy_check_box_btn)
         self.click_on_element(self.register_btn)
 
+    def fn_error_msg(self):
+        self.print_text(self.first_name_error_msg)
+        self.display_msg(self.first_name_error_msg)
+
     def register_with_fn_with_special_charater(self):
         self.send_text_to_textfield(self.first_name_locator, "$martin")
         self.click_on_element(self.privacy_policy_check_box_btn)
@@ -103,6 +107,10 @@ class Registerpage(Base):
     def error_msg(self):
         self.print_text(self.first_name_error_msg)
         self.display_msg(self.first_name_error_msg)
+
+    def phno_error_msg(self):
+        self.print_text(self.telephone_error_msg)
+        self.display_msg(self.telephone_error_msg)
 
     def register_with_wrong_telephone_number(self):
         self.send_text_to_textfield(self.telephone_locator,"898989898.9")

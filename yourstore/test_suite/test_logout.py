@@ -1,5 +1,3 @@
-import pytest
-
 from yourstore.POM.home_page import Homepage
 
 

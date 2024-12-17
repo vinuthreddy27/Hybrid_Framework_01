@@ -6,6 +6,7 @@ from yourstore.POM.logout_page import Logout_page
 from yourstore.POM.register_page import  Registerpage
 from yourstore.POM.search_page import Search_page
 from yourstore.POM.sitemap_page import sitemap_page
+from yourstore.POM.wishlist_page import wishlist_page
 from yourstore.library.library import Base
 
 class Homepage(Base):
@@ -24,6 +25,8 @@ class Homepage(Base):
     contact_us_locator = ("xpath", "//a[.='Contact Us']")
 
     wishlist_link=("id","wishlist-total")
+
+    wishlist=("xpath","//span[contains(text(),'Wish List')]")
 
     cart_total=("css selector","*[id='cart']")
 
@@ -98,3 +101,9 @@ class Homepage(Base):
 
         sitepage=sitemap_page(self.driver)
         return sitepage
+
+    def click_wishlist(self):
+        self.click_on_element(self.wishlist)
+
+        wish_page=wishlist_page(self.driver)
+        return wish_page
