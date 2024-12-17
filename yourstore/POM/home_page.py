@@ -1,9 +1,12 @@
+from yourstore.POM.brands_page import Brands_page
 from yourstore.POM.cart_page import Cart_page
 from yourstore.POM.enqiry_page import Enquiry_page
 from yourstore.POM.gift_page import Gift_page
 from yourstore.POM.login_page import Loginpage
 from yourstore.POM.logout_page import Logout_page
+from yourstore.POM.order_history_apge import Order_history_page
 from yourstore.POM.register_page import  Registerpage
+from yourstore.POM.returns_page import Returns_page
 from yourstore.POM.search_page import Search_page
 from yourstore.POM.sitemap_page import sitemap_page
 from yourstore.POM.wishlist_page import wishlist_page
@@ -34,6 +37,8 @@ class Homepage(Base):
 
     dropdown_my_account=("link text","My Account")
 
+    return_link=("xpath","//ul[@class='list-unstyled']//a[.='Returns']")
+
     downloads_link=("xpath","//li[@class='dropdown']//li[.='Downloads']")
     transactions_link=("xpath","//li[@class='dropdown']//li[.='Transactions']")
     order_history_link=("xpath","//li[@class='dropdown']//li[.='Order History']")
@@ -41,6 +46,8 @@ class Homepage(Base):
 
     footer_my_account=("link text","My Account")
     sitemap_link=("link text","Site Map")
+    brands_link=("xpath","//a[.='Brands']")
+    order_history=("xpath","//ul[@class='list-unstyled']//a[.='Order History']")
 
     def register(self):
         self.click_on_element(self.my_account_locator)
@@ -107,3 +114,21 @@ class Homepage(Base):
 
         wish_page=wishlist_page(self.driver)
         return wish_page
+
+    def click_on_returns(self):
+        self.click_on_element(self.return_link)
+
+        returns_page=Returns_page(self.driver)
+        return returns_page
+
+    def click_order_history_link(self):
+        self.click_on_element(self.order_history)
+
+        o_history_page=Order_history_page(self.driver)
+        return o_history_page
+
+    def click_on_brands(self):
+        self.click_on_element(self.brands_link)
+
+        brands_page=Brands_page(self.driver)
+        return brands_page
