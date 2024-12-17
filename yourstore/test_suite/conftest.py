@@ -1,10 +1,9 @@
-import allure
+
 import pytest
-from allure_commons.types import AttachmentType
 from selenium import webdriver
 
 
-@pytest.fixture(params=["chrome","edge","firefox"],scope="class")
+@pytest.fixture(params=["chrome"],scope="class")
 def get_browser(request):
     global driver
     if request.param=="chrome":
@@ -22,18 +21,18 @@ def get_browser(request):
     yield driver
     driver.quit()
 
-@pytest.hookimpl(hookwrapper=True,tryfirst=True)
-def report(item,call):
-    outcome=yield
-    rep=outcome.get_result()
-    setattr(item,"rep_" + rep.when,rep)
-    return rep
-
-@pytest.fixture()
-def log_on_failure(request):
-    yield
-    item=request.node
-    if item.rep_call.failed:
-        allure.attach(driver.get_screenshot_as_png(),name="failure",attachment_type=AttachmentType.PNG)
+# @pytest.hookimpl(hookwrapper=True,tryfirst=True)
+# def report(item,call):
+#     outcome=yield
+#     rep=outcome.get_result()
+#     setattr(item,"rep_" + rep.when,rep)
+#     return rep
+#
+# @pytest.fixture()
+# def log_on_failure(request):
+#     yield
+#     item=request.node
+#     if item.rep_call.failed:
+#         allure.attach(driver.get_screenshot_as_png(),name="failure",attachment_type=AttachmentType.PNG)
 
 

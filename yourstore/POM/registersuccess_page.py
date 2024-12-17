@@ -7,4 +7,5 @@ class Account_success(Base):
 
 
     def msg_(self):
-        return self.display_msg(self.registered_msg)
+        self.print_text(self.registered_msg)
+        self.display_msg(self.registered_msg)

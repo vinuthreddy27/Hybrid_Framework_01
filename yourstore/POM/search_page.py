@@ -17,7 +17,7 @@ class Search_page(Base):
     prev_btn = ("xpath", "//button[@title='Previous (Left arrow key)']")
     close_btn =("xpath","//button[@title='Close (Esc)']")
 
-    cart_btn=("id","button-car")
+    cart_btn=("id","button-cart")
     quantity_locator = ("name", "quantity")
 
     no_product_msg=("xpath","//p[.='There is no product that matches the search criteria.']")

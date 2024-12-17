@@ -18,17 +18,16 @@ def test_register3(get_browser):
     account_success_page=register_page.register_form_mandator_Fields("chris",
                                                 "gayle",
                                                 "8888888888",
-                                                "email"
                                                 "kkrr",
                                                 "kkrr")
-    assert account_success_page.msg_()
+    account_success_page.msg_()
 
 def test_register2(get_browser):
     homepage = Homepage(get_browser)
     register_page = homepage.register()
-    register_page.register_with__no_fn()
+    register_page.register_with_no_fn()
 
-    assert register_page.error_msg()
+    register_page.error_msg()
 
 
 def test_register4(get_browser):

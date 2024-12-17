@@ -11,7 +11,7 @@ class Base:
 
     def __init__(self,driver):
         self.driver=driver
-        self.wait=WebDriverWait(self.driver,12)
+        self.wait=WebDriverWait(self.driver,6)
 
     def click_on_element(self,locator):
         element=self.wait.until(presence_of_element_located(locator))

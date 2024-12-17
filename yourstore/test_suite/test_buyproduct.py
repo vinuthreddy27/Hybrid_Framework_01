@@ -6,4 +6,4 @@ def test_buyproduct(get_browser):
     login_page.login_into_application("reddyvinuth27@gmail.com", "selenium")
     search_page=homepage.send_product("iPod Touch")
     search_page.product2()
-    homepage.total_cart()
+    search_page.success_Msg()

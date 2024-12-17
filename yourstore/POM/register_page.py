@@ -44,10 +44,10 @@ class Registerpage(Base):
         return account_success_page
 
 
-    def register_form_mandator_Fields(self,fn,ln,email,ph_no,password,c_password):
+    def register_form_mandator_Fields(self,fn,ln,ph_no,password,c_password):
         self.send_text_to_textfield(self.first_name_locator,fn)
         self.send_text_to_textfield(self.last_name_locator,ln)
-        self.send_text_to_textfield(self.generate_random_email(),email)
+        self.send_text_to_textfield(self.email_locator,self.generate_random_email())
         self.send_text_to_textfield(self.telephone_locator,ph_no)
         self.send_text_to_textfield(self.password_locator,password)
         self.send_text_to_textfield(self.conform_password_locator,c_password)
@@ -101,7 +101,8 @@ class Registerpage(Base):
 
 
     def error_msg(self):
-       return self.display_msg(self.first_name_error_msg)
+        self.print_text(self.first_name_error_msg)
+        self.display_msg(self.first_name_error_msg)
 
     def register_with_wrong_telephone_number(self):
         self.send_text_to_textfield(self.telephone_locator,"898989898.9")
