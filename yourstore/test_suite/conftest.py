@@ -1,7 +1,7 @@
 
 import pytest
 from selenium import webdriver
-
+from yourstore.configurations.config import TestData
 
 @pytest.fixture(params=["chrome"],scope="class")
 def get_browser(request):
@@ -16,7 +16,7 @@ def get_browser(request):
         print("invalid browser")
 
     driver.implicitly_wait(3)
-    driver.get("https://tutorialsninja.com/demo/")
+    driver.get(TestData.base_url)
     driver.maximize_window()
     yield driver
     driver.quit()

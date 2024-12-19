@@ -1,12 +1,11 @@
 from yourstore.POM.home_page import Homepage
-
+from yourstore.configurations.config import TestData
 
 
 def test_login(get_browser):
     homepage=Homepage(get_browser)
     login_page=homepage.login_()
-    landing_page=login_page.login_into_application("reddyvinuth27@gmail.com",
-                    "selenium")
+    landing_page=login_page.login_page.login_into_application(TestData.email,TestData.password)
     landing_page.proper_msg()
 
 
@@ -59,7 +58,7 @@ def test_login_7(get_browser):
 def test_login_8(get_browser):
     homepage=Homepage(get_browser)
     login_page=homepage.login_()
-    login_page.login_into_application("reddyvinuth27@gmail.com","selenium")
+    login_page.login_page.login_into_application(TestData.email,TestData.password)
     logout_page=homepage.logout()
 
     logout_page.account_logout()
