@@ -7,6 +7,7 @@ class Loginpage(Base):
     email_locator = ("id", "input-email")
     password_locator = ("id", "input-password")
     login_btn = ("xpath", "//input[@value='Login']")
+
     warning_message = ("xpath", "//div[.='Warning: No match for E-Mail Address and/or Password.']")
     forgot_password_link=("link text","Forgotten Password")
 
@@ -22,3 +23,7 @@ class Loginpage(Base):
 
         forgot_page=Forgot_password_page(self.driver)
         return forgot_page
+
+    def display_error_msg(self):
+        self.print_text(self.warning_message)
+        self.display_msg(self.warning_message)

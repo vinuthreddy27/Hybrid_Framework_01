@@ -132,3 +132,6 @@ class Homepage(Base):
 
         brands_page=Brands_page(self.driver)
         return brands_page
+
+    def shopping_cart_click(self):
+        self.click_on_element(self.shopping_cart)

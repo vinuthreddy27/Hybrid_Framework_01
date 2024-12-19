@@ -20,6 +20,9 @@ class Landing_page(Base):
 
     success_pass_changed=("xpath","//*[.='Success: Your password has been successfully updated.']")
 
+    def proper_msg(self):
+        self.display_msg(self.edit_link)
+
     def edit_account_info(self):
         self.click_on_element(self.edit_link)
 
