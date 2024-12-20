@@ -1,6 +1,6 @@
 
 import pytest
 
-@pytest.mark.usefixtures("log_on_failure","get_browser")
+@pytest.mark.usefixtures("log_on_failure")
 class BaseTest:
     pass
