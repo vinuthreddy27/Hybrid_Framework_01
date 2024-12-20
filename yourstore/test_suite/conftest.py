@@ -5,7 +5,7 @@ from allure_commons.types import AttachmentType
 from selenium import webdriver
 from yourstore.configurations.config import TestData
 
-@pytest.fixture(params=["chrome"],scope="class")
+@pytest.fixture(params=["chrome"],autouse=True)
 def get_browser(request):
     global driver
     if request.param=="chrome":
