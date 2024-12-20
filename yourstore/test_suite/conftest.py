@@ -6,7 +6,7 @@ from yourstore.configurations.config import TestData
 
 @pytest.fixture(params=["chrome"],scope="class")
 def get_browser(request):
-
+    global driver
     if request.param=="chrome":
         driver = webdriver.Chrome()
     elif request.param=="edge":
@@ -15,7 +15,6 @@ def get_browser(request):
         driver=webdriver.Firefox()
     else:
         print("invalid browser")
-    request.cls.driver=driver
     driver.implicitly_wait(3)
     driver.get(TestData.base_url)
     driver.maximize_window()

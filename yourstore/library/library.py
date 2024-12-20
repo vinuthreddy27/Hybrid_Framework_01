@@ -14,7 +14,7 @@ class Base:
         self.actions=ActionChains(self.driver)
 
     def click_on_element(self,locator):
-        element=self.wait.until(presence_of_element_located(locator))
+        element=self.wait.until(visibility_of_element_located(locator))
         element.click()
 
     def send_text_to_textfield(self, locator, text):
